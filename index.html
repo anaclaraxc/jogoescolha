@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qual Você Prefere?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe4e6;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #ff85a2;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 24px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .image-container img {
+            max-width: 40%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .question-container {
+            text-align: center;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 10px 0;
+            width: 100%;
+            text-align: center;
+            background-color: #ffb3c6;
+            color: #333;
+        }
+
+        button {
+            background-color: #ff85a2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff527b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Qual Você Prefere?</h1>
+    </header>
+    <main>
+        <div class="image-container" id="image-container">
+            <img src="escolha1.jpg" alt="Opção 1" onclick="chooseOption(1)" />
+            <img src="escolha2.jpg" alt="Opção 2" onclick="chooseOption(2)" />
+        </div>
+        <div class="question-container">
+            <h2 id="question">Escolha uma opção:</h2>
+        </div>
+    </main>
+    <footer>
+        <p>Ana Clara Cordeiro e Danielle Trindade© 2024</p>
+    </footer>
+
+    <script>
+        // Lista de perguntas e imagens
+        const questions = [
+            { question: "Barraca do beijo ou Para todos os garotos que ja amei", images: [" ", "escolha2.jpg"] },
+            { question: "Pretendente supresa ou Amor Oculto", images: ["pizza.jpg", "hamburguer.jpg"] },
+            { question: "Click ou Gente Grande", images: ["praia.jpg", "montanha.jpg"] },
+            { question: "O Maskara ou O mentiroso", images: ["cachorro.jpg", "gato.jpg"] },
+            { question: "Teen Wolf ou The Vampire Diaries", images: ["azul.jpg", "vermelho.jpg"] },
+            { question: "Love Alarm ou Sorriso Real", images: ["escolha1.jpg", "escolha2.jpg"] },
+            { question: "Velozes e Furiosos ou Rambo: projetado para matar", images: ["pizza.jpg", "hamburguer.jpg"] },
+            { question: "Matrix ou exterminador do futuro", images: ["praia.jpg", "montanha.jpg"] },
+            { question: "Breaking Bad ou The walking dead", images: ["cachorro.jpg", "gato.jpg"] },
+            { question: "JATP ou Ginny e Georgia", images: ["azul.jpg", "vermelho.jpg"] },
+            { question: "Maze Runner ou Duna", images: ["escolha1.jpg", "escolha2.jpg"] },
+            { question: "Terrifier 3 ou Invocação do Mal 2", images: ["pizza.jpg", "hamburguer.jpg"] },
+            { question: "Flash ou Arrow", images: ["praia.jpg", "montanha.jpg"] },
+            { question: "Coringa ou Aves de Rapina", images: ["cachorro.jpg", "gato.jpg"] },
+            { question: "Teddy ou Uma noite no museu", images: ["azul.jpg", "vermelho.jpg"] },
+            { question: "Titanic ou Diario e uma paixão", images: ["escolha1.jpg", "escolha2.jpg"] },
+            { question: "Meu malvado favorito ou Lilo e Stitch", images: ["pizza.jpg", "hamburguer.jpg"] },
+            { question: "Teen beach movie ou  Austin e Ally", images: ["praia.jpg", "montanha.jpg"] },
+            { question: "Jessie ou Zack e Cold", images: ["cachorro.jpg", "gato.jpg"] },
+            { question: "High School Musical ou Descendentes", images: ["azul.jpg", "vermelho.jpg"] },
+            { question: "Cinderela ou Rapunzel", images: ["azul.jpg", "vermelho.jpg"] },
+            { question: "Tropa de elite ou cidade de Deus", images: ["azul.jpg", "vermelho.jpg"] },
+            { question: "Minha mãe eh uma peça ou Os farofeiros", images: ["azul.jpg", "vermelho.jpg"] },
+            { question: "Tapas e beijos ou A grande familia", images: ["azul.jpg", "vermelho.jpg"] },
+            
+        ];
+
+        // Total de perguntas exibidas
+        const maxQuestions = 20;
+        let currentQuestion = 0;
+
+        function chooseOption(optionIndex) {
+            currentQuestion++;
+            if (currentQuestion < maxQuestions && currentQuestion < questions.length) {
+                // Atualiza a pergunta e as imagens
+                updateQuestion();
+            } else if (currentQuestion >= maxQuestions) {
+                // Finaliza o jogo
+                document.querySelector("main").innerHTML = `
+                    <div class="question-container">
+                        <h2>Parabéns, você respondeu todas as 20 perguntas!</h2>
+                        <button onclick="restartGame()">Reiniciar</button>
+                    </div>
+                `;
+            } else {
+                // Se esgotar as perguntas
+                alert("Não há mais perguntas disponíveis!");
+            }
+        }
+
+        function updateQuestion() {
+            const questionText = document.getElementById("question");
+            const imageContainer = document.getElementById("image-container");
+            const questionData = questions[currentQuestion];
+
+            questionText.textContent = questionData.question;
+            imageContainer.innerHTML = `
+                <img src="${questionData.images[0]}" alt="Opção 1" onclick="chooseOption(1)" />
+                <img src="${questionData.images[1]}" alt="Opção 2" onclick="chooseOption(2)" />
+            `;
+        }
+
+        function restartGame() {
+            currentQuestion = 0;
+            updateQuestion();
+        }
+
+        // Inicializa a primeira pergunta
+        updateQuestion();
+    </script>
+</body>
+</html>
