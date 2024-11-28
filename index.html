@@ -30,14 +30,16 @@
 
         .image-container {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            gap:20px;
             margin: 20px 0;
             width: 100%;
         }
 
         .image-container img {
-            max-width: 40%;
-            height: auto;
+            width: 300px;      
+            height: 300px;      
+            object-fit: cover; 
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             cursor: pointer;
@@ -95,54 +97,52 @@
     </footer>
 
     <script>
-        // Lista de perguntas e imagens
+      
         const questions = [
-            { question: "Barraca do beijo ou Para todos os garotos que ja amei", images: [" ", "escolha2.jpg"] },
-            { question: "Pretendente supresa ou Amor Oculto", images: ["pizza.jpg", "hamburguer.jpg"] },
-            { question: "Click ou Gente Grande", images: ["praia.jpg", "montanha.jpg"] },
-            { question: "O Maskara ou O mentiroso", images: ["cachorro.jpg", "gato.jpg"] },
-            { question: "Teen Wolf ou The Vampire Diaries", images: ["azul.jpg", "vermelho.jpg"] },
-            { question: "Love Alarm ou Sorriso Real", images: ["escolha1.jpg", "escolha2.jpg"] },
-            { question: "Velozes e Furiosos ou Rambo: projetado para matar", images: ["pizza.jpg", "hamburguer.jpg"] },
-            { question: "Matrix ou exterminador do futuro", images: ["praia.jpg", "montanha.jpg"] },
-            { question: "Breaking Bad ou The walking dead", images: ["cachorro.jpg", "gato.jpg"] },
-            { question: "JATP ou Ginny e Georgia", images: ["azul.jpg", "vermelho.jpg"] },
-            { question: "Maze Runner ou Duna", images: ["escolha1.jpg", "escolha2.jpg"] },
-            { question: "Terrifier 3 ou Invocação do Mal 2", images: ["pizza.jpg", "hamburguer.jpg"] },
-            { question: "Flash ou Arrow", images: ["praia.jpg", "montanha.jpg"] },
-            { question: "Coringa ou Aves de Rapina", images: ["cachorro.jpg", "gato.jpg"] },
-            { question: "Teddy ou Uma noite no museu", images: ["azul.jpg", "vermelho.jpg"] },
-            { question: "Titanic ou Diario e uma paixão", images: ["escolha1.jpg", "escolha2.jpg"] },
-            { question: "Meu malvado favorito ou Lilo e Stitch", images: ["pizza.jpg", "hamburguer.jpg"] },
-            { question: "Teen beach movie ou  Austin e Ally", images: ["praia.jpg", "montanha.jpg"] },
-            { question: "Jessie ou Zack e Cold", images: ["cachorro.jpg", "gato.jpg"] },
-            { question: "High School Musical ou Descendentes", images: ["azul.jpg", "vermelho.jpg"] },
-            { question: "Cinderela ou Rapunzel", images: ["azul.jpg", "vermelho.jpg"] },
-            { question: "Tropa de elite ou cidade de Deus", images: ["azul.jpg", "vermelho.jpg"] },
-            { question: "Minha mãe eh uma peça ou Os farofeiros", images: ["azul.jpg", "vermelho.jpg"] },
-            { question: "Tapas e beijos ou A grande familia", images: ["azul.jpg", "vermelho.jpg"] },
-            
+            { question: "Barraca do beijo ou Para todos os garotos que ja amei?", image1:"img/barracadobeijo.jpg", image2:"img/todososgarotos.webp" },
+            { question: "Pretendente surpresa ou Amor Oculto?", image1: "img/pretendente.jpg", image2: "img/amor.webp" },
+            { question: "Click ou Gente Grande?", image1: "img/click.jpg", image2: "img/gentegrande.jpg" },
+            { question: "O Máskara ou O mentiroso?", image1: "img/maskara.jpg", image2: "img/mentiroso.webp" },
+            { question: "Teen Wolf ou The Vampire Diaries?", image1: "img/wolf.webp", image2: "img/tvd.jpg" },
+            { question: "Love Alarm ou Sorriso Real?", image1: "img/love.jpg", image2: "img/sorriso.webp" },
+            { question: "Velozes e Furiosos ou Rambo: projetado para matar?", image1: "img/velozes.jpg", image2: "img/rambo.jpg" },
+            { question: "Matrix ou Exterminador do Futuro?", image1: "img/matrix.JPG", image2: "img/futuro.webp" },
+            { question: "Breaking Bad ou The Walking Dead?", image1: "img/bad.jpg", image2: "img/melhordomundo.jpg" },
+            { question: "JATP ou Ginny e Georgia?", image1: "img/julie.jpg", image2: "img/ginny.jpg" },
+            { question: "Maze Runner ou Duna?", image1: "img/maze.jpg", image2: "img/duna.jpg" },
+            { question: "Terrifier 3 ou Invocação do Mal 2?", image1: "img/terror.jpg", image2: "img/mal.jpg" },
+            { question: "Flash ou Arrow?", image1: "img/flash.jpg", image2: "img/arrow.jpg" },
+            { question: "Coringa ou Aves de Rapina?", image1: "img/coringa.jpg", image2: "img/aves.webp" },
+            { question: "Teddy ou Uma noite no museu?", image1: "img/teddy.webp", image2: "img/noite.jpg" },
+            { question: "Titanic ou Diário de uma paixão?", image1: "img/titanic.webp", image2: "img/diario.jpg" },
+            { question: "Meu malvado favorito ou Lilo e Stitch?", image1: "img/malvado.jpg", image2: "img/lilo.webp" },
+            { question: "Teen Beach Movie ou Austin e Ally?", image1: "img/teen.jpg", image2: "img/images.jpg" },
+            { question: "Jessie ou Zack e Cold?", image1: "img/jessie.webp", image2: "img/zack.webp" },
+            { question: "High School Musical ou Descendentes?", image1: "img/high.jpg", image2: "img/descendentes.jpg" },
+            { question: "Cinderela ou Rapunzel?", image1: "img/cinderela.png", image2: "img/rapunzel.jpg" },
+            { question: "Tropa de Elite ou Cidade de Deus?", image1: "img/tropa.webp", image2: "img/cidade.webp" },
+            { question: "Minha mãe é uma peça ou Os Farofeiros?", image1: "img/mae.jpg", image2: "img/farofa.jpg" },
+            { question: "Tapas e Beijos ou A Grande Família?", image1: "img/tapas.webp", image2: "img/familia.webp" }
         ];
-
-        // Total de perguntas exibidas
+ 
         const maxQuestions = 20;
         let currentQuestion = 0;
 
         function chooseOption(optionIndex) {
             currentQuestion++;
             if (currentQuestion < maxQuestions && currentQuestion < questions.length) {
-                // Atualiza a pergunta e as imagens
+               
                 updateQuestion();
             } else if (currentQuestion >= maxQuestions) {
-                // Finaliza o jogo
+               
                 document.querySelector("main").innerHTML = `
                     <div class="question-container">
-                        <h2>Parabéns, você respondeu todas as 20 perguntas!</h2>
-                        <button onclick="restartGame()">Reiniciar</button>
+                        <h2>Parabéns, você respondeu todas as 20 perguntas!</h2
+                        <h2>Recarregue para jogar novamente!</h2
                     </div>
                 `;
             } else {
-                // Se esgotar as perguntas
+                
                 alert("Não há mais perguntas disponíveis!");
             }
         }
@@ -154,8 +154,8 @@
 
             questionText.textContent = questionData.question;
             imageContainer.innerHTML = `
-                <img src="${questionData.images[0]}" alt="Opção 1" onclick="chooseOption(1)" />
-                <img src="${questionData.images[1]}" alt="Opção 2" onclick="chooseOption(2)" />
+                <img src="${questionData.image1}" alt="Opção 1" onclick="chooseOption(1)" />
+                <img src="${questionData.image2}" alt="Opção 2" onclick="chooseOption(2)" />
             `;
         }
 
@@ -164,7 +164,6 @@
             updateQuestion();
         }
 
-        // Inicializa a primeira pergunta
         updateQuestion();
     </script>
 </body>
